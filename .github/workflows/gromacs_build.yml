@@ -13,5 +13,6 @@ jobs:
       #build
       - run: pwd && ls
       - run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON
-      working-directory: build/
-      - run: make && make check ; source /usr/local/gromacs/bin/GMXRC
+      - name: make
+        working-directory: build/
+        - run: make && make check ; source /usr/local/gromacs/bin/GMXRC                    
