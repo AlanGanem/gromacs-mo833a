@@ -12,4 +12,6 @@ jobs:
       - run: sudo apt-get -y install build-essential libssl-dev cmake
       #build
       - run: pwd && ls
-      - run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON && make && make check ; source /usr/local/gromacs/bin/GMXRC
+      - run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON
+      working-directory: build/
+      - run: make && make check ; source /usr/local/gromacs/bin/GMXRC
