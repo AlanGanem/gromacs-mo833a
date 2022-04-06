@@ -17,4 +17,4 @@ jobs:
     #make
     - name: make
       working-directory: build/
-      run: make && make check ; source /usr/local/gromacs/bin/GMXRC                    
+      run: make
