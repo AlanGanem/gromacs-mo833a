@@ -8,11 +8,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: setup        
     #update and isntal wget and git
-      run: sudo apt update && sudo apt-get -y install wget git
-      #install cmake
-      run: sudo apt-get -y install build-essential libssl-dev cmake
-      #build
-      run: pwd && ls
+      run: sudo apt update && sudo apt-get -y install wget git build-essential libssl-dev cmake
+    
+    #cmake
+    - name: cmake      
       run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON
     #make
     - name: make
