@@ -7,8 +7,9 @@ jobs:
       #checks out
       - uses: actions/checkout@v3
       #update and isntal wget and git
-      - run: apt update && apt-get -y install wget git
+      - run: sudo apt update && sudo apt-get -y install wget git
       #install cmake
-      - run: apt-get -y install build-essential libssl-dev cmake
+      - run: sudo apt-get -y install build-essential libssl-dev cmake
       #build
-      - run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON && make && make check ; sudo make install && source /usr/local/gromacs/bin/GMXRC
+      - run: pwd && ls
+      - run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON && make && make check ; make install && source /usr/local/gromacs/bin/GMXRC
