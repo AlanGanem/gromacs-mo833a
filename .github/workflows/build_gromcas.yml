@@ -11,9 +11,12 @@ jobs:
     - name: setup        
     #update and isntal wget and git
       run: sudo apt-get update #&& sudo apt-get -y install wget git build-essential libssl-dev cmake    
+    #instal g++ compiler
+    - name: install g++
+      run: sudo apt-get install g++ -y
     #cmake
     - name: cmake      
-      run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON
+      run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DCMAKE_CXX_COMPILER=g++    
     #make
     - name: make
       working-directory: build/
