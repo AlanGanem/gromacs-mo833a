@@ -1,7 +1,7 @@
 name: gromacs-build-mo833
 on:
   push:
-  	branches: [git_actions]
+    branches: [ git_actions ]
 jobs:
   build-gromacs:
     runs-on: ubuntu-latest
