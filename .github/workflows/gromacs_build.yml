@@ -2,7 +2,7 @@ name: gromacs-build-mo833
 on: [push]
 jobs:
   build-gromacs:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       #checks out
       - uses: actions/checkout@v3
