@@ -4,15 +4,16 @@ jobs:
   build-gromacs:
     runs-on: ubuntu-latest
     steps:
-      #checks out
-      - uses: actions/checkout@v3
-      #update and isntal wget and git
-      - run: sudo apt update && sudo apt-get -y install wget git
-      #install cmake
-      - run: sudo apt-get -y install build-essential libssl-dev cmake
-      #build
-      - run: pwd && ls
-      - run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON
+      - name: setup
+        #checks out
+        - uses: actions/checkout@v3
+        #update and isntal wget and git
+        - run: sudo apt update && sudo apt-get -y install wget git
+        #install cmake
+        - run: sudo apt-get -y install build-essential libssl-dev cmake
+        #build
+        - run: pwd && ls
+        - run: mkdir build && cd build && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON
       - name: make
         working-directory: build/
         - run: make && make check ; source /usr/local/gromacs/bin/GMXRC                    
