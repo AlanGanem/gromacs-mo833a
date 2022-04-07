@@ -70,6 +70,16 @@
 
 #include "mdrun_main.h"
 
+#include <sys/time.h>
+#include <stdio.h>
+double mysecond() {
+	struct timeval tp;
+	struct timezone tzp;
+	gettimeofday(&tp,&tzp);
+	return ((double) tp.tv_sec +
+	(double) tp.tv_usec * 1.e-6 );
+}
+
 namespace gmx
 {
 
@@ -267,7 +277,13 @@ int gmx_mdrun(int argc, char* argv[])
 
     auto runner = builder.build();
 
-    return runner.mdrunner();
+    // \measuring time for ativ-3-exp-1
+    tic = mysecond();
+    result = runner.mdrunner(); 
+    toc = mysecond();
+    printf("[MO833]: runner.mdrunner() exec. time: %f", (double) toc-tic);
+    
+    return result;
 }
 
 } // namespace gmx
