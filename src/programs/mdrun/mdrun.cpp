@@ -277,10 +277,10 @@ int gmx_mdrun(int argc, char* argv[])
 
     auto runner = builder.build();
 
-    // \measuring time for ativ-3-exp-1
-    tic = mysecond();
-    result = runner.mdrunner(); 
-    toc = mysecond();
+    // \measuring time for ativ-3-exp-1    
+    double tic = mysecond();
+    void *result = runner.mdrunner(); 
+    double toc = mysecond();
     printf("[MO833]: runner.mdrunner() exec. time: %f", (double) toc-tic);
     
     return result;
