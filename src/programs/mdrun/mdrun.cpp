@@ -72,6 +72,9 @@
 
 #include <sys/time.h>
 #include <stdio.h>
+namespace gmx
+{
+
 double mysecond() {
 	struct timeval tp;
 	struct timezone tzp;
@@ -80,8 +83,6 @@ double mysecond() {
 	(double) tp.tv_usec * 1.e-6 );
 }
 
-namespace gmx
-{
 
 //! Implements C-style main function for mdrun
 int gmx_mdrun(int argc, char* argv[])
@@ -279,9 +280,9 @@ int gmx_mdrun(int argc, char* argv[])
 
     // \measuring time for ativ-3-exp-1    
     double tic = mysecond();
-    void *result = runner.mdrunner(); 
+    int result = runner.mdrunner(); 
     double toc = mysecond();
-    printf("[MO833]: runner.mdrunner() exec. time: %f", (double) toc-tic);
+    printf("[MO833]: runner.mdrunner() exec. time: %f !", (double) toc-tic);
     
     return result;
 }
