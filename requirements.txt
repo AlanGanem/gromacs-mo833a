@@ -1,0 +1,5 @@
+seaborn
+tqdm
+subprocess
+typer
+pathlib
